@@ -70,8 +70,8 @@ module.exports = async function run_bot({app_name, username, password, card_numb
                 await bot.send('{TAB}');
 
                 // clear and enter the password
-                //await bot.send('^a');
-                //await bot.send('{BACKSPACE}');
+                await bot.send('^a');
+                await bot.send('{BACKSPACE}');
                 await bot.send(password);
 
                 // hit enter key for login
