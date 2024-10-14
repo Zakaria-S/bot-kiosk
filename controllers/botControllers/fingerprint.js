@@ -13,7 +13,7 @@ module.exports = async function fingerprint(req, res) {
             })
         }
 
-        run_bot({app_name, username, password, card_number, exit, wait});
+        await run_bot({app_name, username, password, card_number, exit, wait});
         return res.status(200).json({ message: 'Success' });
 
     } catch(err) {
