@@ -14,7 +14,7 @@ function delay(ms) {
 module.exports = async function run_bot({app_name, username, password, card_number, exit, wait }) {
             // open or activate the application window
 
-            console.log(app_name, username, password, card_number, exit, wait)
+            //console.log(app_name, username, password, card_number, exit, wait)
             const win_title = (app_name === 'fingerprint') ? fp_win_title : frista_win_title;
             const ins_path = (app_name === 'fingerprint') ? fp_ins_path : frista_ins_path;
 
@@ -75,7 +75,12 @@ module.exports = async function run_bot({app_name, username, password, card_numb
                 await bot.send(password);
 
                 // hit enter key for login
-                await bot.send('{ENTER}');
+                if (app_name === 'fingerprint') {
+                    await bot.send('{ENTER}');
+                } else {
+                    await bot.mouseMove(left + Math.floor(width * 0.5), top + Math.floor(height * 0.85), 0);
+                    await bot.mouseClick('left');
+                }
 
                 await delay(+wait || 3_593);
             }
